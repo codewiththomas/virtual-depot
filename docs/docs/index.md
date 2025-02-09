@@ -43,13 +43,27 @@ Trading
 
 The fincancial data are pulled from the Yahoo Finance API and stored in a SQLite database.
 
-## Classes
+## Code Structure
+
+```bash
+/src
+ ├── __main__.py
+ └── entities
+      ├── base.py
+      ├── instrument.py
+      ├── ticker_symbol.py
+      ├── instrument_history.py
+      ├── depot.py
+      ├── depot_balance.py
+      ├── depot_holdings.py
+      └── transaction.py
+```
 
 - Asset - as single asset
 - Depot - as depot of assets
 - Bot - as trading bot
 
-KPIs for single instruments:
+## KPIs for single instruments:
 
 - Short SMA (20 Tage)
 - Long SMS (50 Tage)
