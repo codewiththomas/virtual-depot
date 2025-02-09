@@ -1,0 +1,6 @@
+.venv/
+.mypy_cache/
+__pycache__/
+trading_bot.db
+.db/
+.fycache/
