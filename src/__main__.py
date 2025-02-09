@@ -1,13 +1,10 @@
 import logging
-from persistence import Persistence
+from datetime import datetime as dt
 from instrument import Instrument
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     #depot = Persistence()
 
-    msft = Instrument(1, "Apple", "APPL", "865985", "US0378331005", "stock", "2021-01-01 00:00:00")
-    msft = Instrument(2, "Apple", "APC", "865985", "US0378331005", "stock", "2021-01-01 00:00:00")
-    msft = Instrument(3, "Microsoft", "Google", "stock", "2021-01-01 00:00:00")
-    msft = Instrument(4, "Microsoft", "MSFT", "stock", "2021-01-01 00:00:00")
-    msft.save_historical_data()
+    apple = Instrument(1, "865985", "US0378331005", "Apple", ["APPL", "APC"], "stock", dt.now())
+    apple.save_historical_data()

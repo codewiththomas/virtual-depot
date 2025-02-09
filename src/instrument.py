@@ -6,6 +6,11 @@ from persistence import Persistence
 
 class Instrument:
 
+
+    def __init___(self) -> None:
+        pass
+
+
     # LS Exchange Börse Hamburg
     def __init__(self, id: int, isin: str, wkn: str, name: str, ticker_symbols: List[str], type: str, last_updated: dt.datetime) -> None:
         """_summary_
@@ -27,6 +32,9 @@ class Instrument:
         self.last_updated = last_updated
         self.date_of_view = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         yf.set_tz_cache_location("./.fycache")
+
+
+    def get_by_id(self, isin: str) -> Instrument:
 
 
     def _load_historical_data(self) -> bool:
