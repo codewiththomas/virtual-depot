@@ -6,7 +6,7 @@
    1. [ ] Manage cash balance
    2. [ ] Add Asset to depot (buy)
    3. [ ] Remove Asset from depot (sell)
-   4. [ ] Get historical data for assets in depot
+   4. [x] Get historical data for assets in depot
    5. [ ] Calculate Value of depot
 2. Enrich data
 3. Develop trading strategies
