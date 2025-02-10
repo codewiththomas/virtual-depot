@@ -16,8 +16,8 @@ def populate_instruments():
     try:
         # ---- Apple Inc. ----
         apple = Instrument(
-            isin='US0378331005',  # Apple ISIN (example value)
-            wkn=None,             # Optional for stocks & bonds
+            isin='US0378331005',
+            wkn='865985',
             name='Apple Inc.',
             type='Stock'
         )
@@ -26,17 +26,17 @@ def populate_instruments():
         # ---- Alphabet Inc. (Google) ----
         google = Instrument(
             isin='US02079K3059',  # Alphabet ISIN (example value)
-            wkn=None,             # Optional
+            wkn='A14Y6F',             # Optional
             name='Alphabet Inc.',
             type='Stock'
         )
         google.ticker_symbols.append(TickerSymbol(symbol='GOOGL'))
 
-        # ---- ETF MSCI World ----
+        # ---- ETF iShares Core MSCI World ETF ----
         etf_msci_world = Instrument(
-            isin=None,  # Not required for ETF
-            wkn=None,   # Not required for ETF
-            name='ETF MSCI World',
+            isin='IE00B4L5Y983',
+            wkn='A0RPWH',
+            name='iShares Core MSCI World ETF (Acc)',
             type='ETF'
         )
         # You can choose an appropriate ticker symbol for the ETF.
