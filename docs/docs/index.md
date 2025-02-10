@@ -63,7 +63,7 @@ The fincancial data are pulled from the Yahoo Finance API and stored in a SQLite
 - Depot - as depot of assets
 - Bot - as trading bot
 
-## KPIs for single instruments:
+## KPIs for single instruments
 
 - Short SMA (20 Tage)
 - Long SMS (50 Tage)
@@ -71,3 +71,7 @@ The fincancial data are pulled from the Yahoo Finance API and stored in a SQLite
 - Bollinger Bands (n=20, up/down)
 - MACD (Moving Average Convergence Divergence)
 - OBV (On Balance Volume)
+
+- Volatility
+- Sharpe Ratio
+- Max loss
