@@ -1,5 +1,43 @@
 # Trading Bot
 
+## Getting startet
+
+Clone repo.
+
+```bash
+git clone https://github.com/codewiththomas/trade-bot.git
+```
+
+Create a virtual environment.
+
+```bash
+py -3.12 -m venv .venv
+```
+
+Activate virtual environment.
+
+```bash
+.venv\Scripts\activate
+```
+
+Install dependencies.
+
+```bash
+pip install -r requirements.txt
+```
+
+Navigate to `/src` folder.
+
+```bash
+cd src
+```
+
+Run the app.
+
+```bash
+python main.py
+```
+
 ## Milestones
 
 1. Have a virtual depot
