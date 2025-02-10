@@ -54,23 +54,22 @@ def update_stock_data():
 
 
 def init_db():
-    update_stock_data()
-    # engine = create_engine('sqlite:///.db/tading-bot.sqlite3.db', echo=True)
-    # Base.metadata.create_all(engine)
-    # Session = sessionmaker(bind=engine)
-    # with Session() as session:
-    #     microsoft = Instrument(
-    #         isin='US5949181045',
-    #         wkn='870747',
-    #         name='Microsoft Corporation',
-    #         type='Stock'
-    #     )
-    #     msft_ticker = TickerSymbol(
-    #         symbol='MSFT'
-    #     )
-    #     microsoft.ticker_symbols.append(msft_ticker)
-    #     session.add(microsoft)
-    #     session.commit()
+    engine = create_engine('sqlite:///.db/tading-bot.sqlite3.db', echo=True)
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    with Session() as session:
+        microsoft = Instrument(
+            isin='US5949181045',
+            wkn='870747',
+            name='Microsoft Corporation',
+            type='Stock'
+        )
+        msft_ticker = TickerSymbol(
+            symbol='MSFT'
+        )
+        microsoft.ticker_symbols.append(msft_ticker)
+        session.add(microsoft)
+        session.commit()
 
 
 def main():
@@ -78,6 +77,7 @@ def main():
 
     # Create an SQLite engine (change the URL for other DBs)
     init_db()
+    update_stock_data()
 
     logging.info("Database tables created")
 
