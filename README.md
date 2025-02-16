@@ -1,4 +1,6 @@
-# Trading Bot
+# Virtual Depot
+
+A virtual depot where assets (stocks/etf) can be managed. Uses Flask to run as webapp in browser. 
 
 ## Milestones
 
@@ -11,6 +13,15 @@
 2. Enrich data
 3. Develop trading strategies
 4. Self-Trading
+
+## Tech Stack
+
+- Python 3.12
+  - yfinance
+  - sqlalchemy
+  - flask
+  - mkdocs
+- SQLite 
 
 ## Quick Start
 
