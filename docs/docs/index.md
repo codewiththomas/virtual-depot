@@ -1,4 +1,7 @@
-# Trading Bot
+# Virtual Depot
+
+The goal is to create a virtual depot that can be used to trade on the stock market. The depot should be able to trade
+on
 
 The goal is to create a trading bot that can be used to trade on the stock market. The bot should be able to trade on
 different stock exchanges and with different assets. The bot should be able to trade with different strategies and
@@ -43,21 +46,7 @@ Trading
 
 The fincancial data are pulled from the Yahoo Finance API and stored in a SQLite database.
 
-## Code Structure
 
-```bash
-/src
- ├── __main__.py
- └── entities
-      ├── base.py
-      ├── instrument.py
-      ├── ticker_symbol.py
-      ├── instrument_history.py
-      ├── depot.py
-      ├── depot_balance.py
-      ├── depot_holdings.py
-      └── transaction.py
-```
 
 - Asset - as single asset
 - Depot - as depot of assets

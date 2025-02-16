@@ -25,12 +25,18 @@ class Asset(db.Model):
 
 class PriceHistory(db.Model):
     """
-    Speichert historische (Tages-)Schlusskurse für ein Asset.
+    Speichert historische Kurse für ein Asset.
     """
     id = db.Column(db.Integer, primary_key=True)
     asset_id = db.Column(db.Integer, db.ForeignKey('asset.id'), nullable=False)
     date = db.Column(db.Date, nullable=False)
+    open_price = db.Column(db.Float)
+    high_price = db.Column(db.Float)
+    low_price = db.Column(db.Float)
     close_price = db.Column(db.Float, nullable=False)
+    volume = db.Column(db.Integer)
+    dividends = db.Column(db.Float)
+    stock_splits = db.Column(db.Float)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
