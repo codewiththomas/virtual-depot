@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}{{ asset.symbol }} - Details{% endblock %}
+{% block content %}
+<h1>{{ asset.symbol }} ({{ asset.name }})</h1>
+<p><strong>Aktueller Kurs:</strong> {{ "%.2f"|format(latest_price) }}</p>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Kaufen</h2>
+    <form action="{{ url_for('buy_asset') }}" method="POST" class="mb-3">
+      <input type="hidden" name="symbol" value="{{ asset.symbol }}">
+      <div class="mb-2">
+        <label for="quantityBuy" class="form-label">Stückzahl:</label>
+        <input type="number" step="0.000000001" name="quantity" id="quantityBuy" class="form-control">
+      </div>
+      <div class="mb-2">
+        <label for="feeBuy" class="form-label">Gebühr:</label>
+        <input type="number" step="0.01" name="fee" id="feeBuy" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-success">Kaufen</button>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    {% if holding and holding.quantity > 0 %}
+      <h2>Verkaufen</h2>
+      <form action="{{ url_for('sell_asset') }}" method="POST">
+        <input type="hidden" name="symbol" value="{{ asset.symbol }}">
+        <div class="mb-2">
+          <label for="quantitySell" class="form-label">Stückzahl:</label>
+          <input type="number" step="0.000000001" name="quantity" id="quantitySell"
+                 max="{{ holding.quantity }}" class="form-control">
+        </div>
+        <div class="mb-2">
+          <label for="feeSell" class="form-label">Gebühr:</label>
+          <input type="number" step="0.01" name="fee" id="feeSell" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-danger">Verkaufen</button>
+      </form>
+    {% endif %}
+  </div>
+</div>
+
+<hr>
+
+<h2>Historische Daten &amp; Indikatoren (letzte 30 Tage)</h2>
+<table class="table table-sm table-bordered">
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Close</th>
+      <th>SMA5</th>
+      <th>SMA20</th>
+      <th>RSI14</th>
+      <th>BB Mitte</th>
+      <th>BB Oben</th>
+      <th>BB Unten</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for date, row in df.iterrows() %}
+    <tr>
+      <td>{{ date }}</td>
+      <td>{{ "%.2f"|format(row['close']) }}</td>
+      <td>{{ "%.2f"|format(row['SMA5']) if row['SMA5'] else "" }}</td>
+      <td>{{ "%.2f"|format(row['SMA20']) if row['SMA20'] else "" }}</td>
+      <td>{{ "%.2f"|format(row['RSI14']) if row['RSI14'] else "" }}</td>
+      <td>{{ "%.2f"|format(row['BB_MID']) if row['BB_MID'] else "" }}</td>
+      <td>{{ "%.2f"|format(row['BB_UPPER']) if row['BB_UPPER'] else "" }}</td>
+      <td>{{ "%.2f"|format(row['BB_LOWER']) if row['BB_LOWER'] else "" }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

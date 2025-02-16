@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Depot{% endblock %}
+{% block content %}
+<h1>Depot</h1>
+<div class="row">
+  <div class="col-md-6">
+    <p><strong>Kontostand:</strong> {{ "%.2f"|format(depot.balance) }} €</p>
+    <form action="{{ url_for('add_balance') }}" method="POST" class="d-flex">
+      <input type="number" step="0.01" name="amount" placeholder="Guthaben hinzufügen" class="form-control me-2">
+      <button type="submit" class="btn btn-primary">Hinzufügen</button>
+    </form>
+  </div>
+</div>
+
+<hr>
+
+<h2>Bestände</h2>
+<p><strong>Gesamtwert:</strong> {{ "%.2f"|format(total_value) }} €</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Anzahl</th>
+      <th>Durchschnittspreis</th>
+      <th>Aktueller Preis</th>
+      <th>Wert</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for h in holdings %}
+    <tr>
+      <td>
+        <a href="{{ url_for('view_asset', symbol=h.symbol) }}">
+          {{ h.symbol }}
+        </a>
+      </td>
+      <td>{{ h.name }}</td>
+      <td>{{ "%.2f"|format(h.quantity) }}</td>
+      <td>{{ "%.2f"|format(h.average_cost) }}</td>
+      <td>{{ "%.2f"|format(h.current_price) }}</td>
+      <td>{{ "%.2f"|format(h.holding_value) }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

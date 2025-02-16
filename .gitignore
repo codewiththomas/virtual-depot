@@ -4,3 +4,5 @@ __pycache__/
 trading_bot.db
 .db/
 .fycache/
+_archive/
+depot.db
